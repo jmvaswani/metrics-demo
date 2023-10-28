@@ -1,0 +1,20 @@
+version: "3"
+services:
+  flask-app:
+    build: ./flask-server
+    ports:
+      - 8080:8080
+  node-exporter:
+    image: bitnami/node-exporter:latest
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus/config.yml:/etc/prometheus/prometheus.yml
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    volumes:
+      - ./grafana/grafana-data:/var/lib/grafana
+    user: "0"
+    ports:
+      - 3000:3000

@@ -1,0 +1,7 @@
+version: "3"
+services:
+  node-exporter:
+    image: bitnami/node-exporter:latest
+    container_name: node-exporter
+    ports:
+      - "9100:9100"
